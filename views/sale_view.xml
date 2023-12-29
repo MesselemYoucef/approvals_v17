@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="custom_sale_approval_view_form" model="ir.ui.view">
+        <field name="name">custom.sale.approval_view.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
+                <attribute name="invisible">approval1 == False or approval2 == False</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_preview_sale_order']" position="attributes">
+                <attribute name="invisible">approval1 == False or approval2 == False</attribute>
+            </xpath>
+            <field name="payment_term_id" position="after">
+                <field name = "approval1" widget="boolean_toggle" readonly="see_approval==False"/>
+                <field name = "approval2" widget="boolean_toggle" />
+                <field name = "see_approval" invisible="True"/>
+            </field>
+        </field>
+    </record>
+</odoo>

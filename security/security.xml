@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_see_approval_user" model="res.groups">
+        <field name="name">Can See Approvals</field>
+    </record>
+</odoo>
