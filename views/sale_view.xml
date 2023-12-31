@@ -6,15 +6,15 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
-                <attribute name="invisible">(approval1 == False or approval2 == False) and see_approval==False</attribute>
+                <attribute name="invisible">(approval1 == False or approval2 == False) and see_approval==False or state != "draft"</attribute>
             </xpath>
             <xpath expr="//button[@name='action_preview_sale_order']" position="attributes">
                 <attribute name="invisible">(approval1 == False or approval2 == False) and see_approval==False</attribute>
             </xpath>
             <field name="payment_term_id" position="after">
-                <field name = "approval1" widget="boolean_toggle" readonly="see_approval==False"/>
-                <field name = "approval2" widget="boolean_toggle" readonly="see_approval==False"/>
-                <field name = "see_approval" invisible="True"/>
+                <field name="approval1" widget="boolean_toggle" readonly="see_approval==False"/>
+                <field name="approval2" widget="boolean_toggle" readonly="see_approval==False"/>
+                <field name="see_approval" invisible="True"/>
             </field>
         </field>
     </record>
